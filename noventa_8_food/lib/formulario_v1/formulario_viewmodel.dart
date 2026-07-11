@@ -15,21 +15,11 @@ class FormularioViewmodel {
   }
 
   Future<void> _loadCategorias() async {
-    state.value = FormularioState(
-      isLoading: true,
-      isReadOnly: false,
-      isLoadingWithForm: false,
-      categoriasDisponiveis: [],
-    );
+    state.value = FormularioState(isLoading: true);
 
     final categorias = await repository.getCategorias();
 
-    state.value = FormularioState(
-      isLoading: false,
-      isReadOnly: false,
-      isLoadingWithForm: false,
-      categoriasDisponiveis: categorias,
-    );
+    state.value = FormularioState(categoriasDisponiveis: categorias);
   }
 
   void submit(Restaurante restaurante) async {
