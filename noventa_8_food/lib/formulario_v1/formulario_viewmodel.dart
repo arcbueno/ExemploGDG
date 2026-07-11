@@ -46,6 +46,20 @@ class FormularioViewmodel {
     );
   }
 
+  void editForm() {
+    if (!state.value.isReadOnly ||
+        state.value.isLoading ||
+        state.value.isLoadingWithForm) {
+      return;
+    }
+
+    state.value = FormularioState(
+      isReadOnly: false,
+      categoriasDisponiveis: state.value.categoriasDisponiveis,
+      dadosRestaurante: state.value.dadosRestaurante,
+    );
+  }
+
   Future<String?> confirmSubmit() async {
     if (state.value.dadosRestaurante == null) {
       return 'Não há dados para enviar';

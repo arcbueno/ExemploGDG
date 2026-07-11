@@ -36,6 +36,17 @@ class FormularioViewmodel {
     );
   }
 
+  void editForm() {
+    if (state.value is! FormularioReadOnlyState) {
+      return;
+    }
+
+    final categorias =
+        (state.value as FormularioReadOnlyState).categoriasDisponiveis;
+
+    state.value = FormularioEditingState(categoriasDisponiveis: categorias);
+  }
+
   Future<String?> confirmSubmit() async {
     if (state.value is! FormularioReadOnlyState) {
       return 'Estado inválido para submissão';
