@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:noventa_8_food/formulario_v1/formulario_page.dart';
+import 'package:noventa_8_food/formulario_v2/formulario_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -104,18 +106,23 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: .center,
           children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const FormularioPage()),
+              ),
+              child: Text('Form 1 - default'),
+            ),
+            SizedBox(height: 100),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const FormularioPageV2(),
+                ),
+              ),
+              child: Text('Form 2 - with state pattern'),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
